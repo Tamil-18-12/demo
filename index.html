@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lock/Unlock Buttons</title>
+    <style>
+        /* CSS for Styling */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            /* Adds space between the buttons */
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            color: white;
+        }
+
+        #lockBtn {
+            background-color: #dc3545;
+            /* Red for lock */
+        }
+
+        #unlockBtn {
+            background-color: #28a745;
+            /* Green for unlock */
+        }
+
+        /* Style for when a button is disabled */
+        button:disabled {
+            background-color: #6c757d;
+            /* Gray color */
+            opacity: 0.6;
+            cursor: not-allowed;
+            /* Shows a 'not allowed' icon on hover */
+            transform: scale(0.98);
+        }
+
+        button:not(:disabled):hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Button Lock Example 🔒</h1>
+    <div class="button-container">
+        <button id="lockBtn">Lock</button>
+        <button id="unlockBtn">Unlock</button>
+    </div>
+
+    <script>
+        // JavaScript for Functionality
+
+        // 1. Get references to the button elements from the HTML
+        const lockButton = document.getElementById('lockBtn');
+        const unlockButton = document.getElementById('unlockBtn');
+
+        // 2. Set the initial state when the page loads
+        // The 'Unlock' button starts as disabled.
+        unlockButton.disabled = true;
+
+        // 3. Add a click event listener to the 'Lock' button
+        lockButton.addEventListener('click', () => {
+            // When 'Lock' is clicked:
+            // - Disable the 'Lock' button itself.
+            lockButton.disabled = true;
+            // - Enable the 'Unlock' button.
+            unlockButton.disabled = false;
+        });
+
+        // 4. Add a click event listener to the 'Unlock' button
+        unlockButton.addEventListener('click', () => {
+            // When 'Unlock' is clicked:
+            // - Disable the 'Unlock' button itself.
+            unlockButton.disabled = true;
+            // - Enable the 'Lock' button.
+            lockButton.disabled = false;
+        });
+    </script>
+
+</body>
+
+</html>
